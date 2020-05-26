@@ -1,0 +1,70 @@
+﻿<Window x:Class="Prime_MIDI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prime_MIDI"
+        xmlns:dxwpf="clr-namespace:DXWPF"
+        mc:Ignorable="d"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Name="mainWindow"
+        Title="Prime" WindowStyle="None" Height="700" Width="1200" 
+        Loaded="mainWindow_Loaded" Unloaded="mainWindow_Unloaded" SnapsToDevicePixels="True" PreviewKeyDown="mainWindow_PreviewKeyDown"  KeyDown="mainWindow_KeyDown" KeyUp="mainWindow_KeyUp"
+        AllowDrop="True" PreviewDrop="mainWindow_PreviewDrop" PreviewDragEnter="mainWindow_PreviewDragEnter" 
+        PreviewDragLeave="mainWindow_PreviewDragLeave" WindowStartupLocation="CenterScreen" 
+        Focusable="True" Closing="mainWindow_Closing" AllowsTransparency="False">
+    <Window.Background>
+        <SolidColorBrush Color="Transparent"/>
+    </Window.Background>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ButtonTemplates.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{Binding ActualHeight,ElementName=titlebar}"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <Border Visibility="{Binding ChromeVisibility, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Background="#5E35B1" DockPanel.Dock="Top" Height="55" x:Name="titlebar">
+                <Grid>
+                    <DockPanel HorizontalAlignment="Left">
+                        <local:BetterSlider Width="200" WindowChrome.IsHitTestVisibleInChrome="True" Margin="20" x:Name="colorScale" Minimum="0.01" Maximum="1" Value="0.2" UserValueChanged="colorScale_UserValueChanged"/>
+                        <local:BetterSlider Width="200" WindowChrome.IsHitTestVisibleInChrome="True" Margin="20" x:Name="minScale" Minimum="0" Maximum="1" Value="0" UserValueChanged="minScale_UserValueChanged"/>
+                        <local:BetterSlider Width="200" WindowChrome.IsHitTestVisibleInChrome="True" Margin="20" x:Name="maxScale" Minimum="0" Maximum="1" Value="1" UserValueChanged="maxScale_UserValueChanged"/>
+                    </DockPanel>
+                    <!--<Image HorizontalAlignment="Center" Width="40" Height="Auto" Margin="5" Source="i2m.png"/>-->
+                    <DockPanel HorizontalAlignment="Right" Margin="0,0,10,0" Grid.RowSpan="2" Width="52" Panel.ZIndex="100">
+                        <Button Style="{StaticResource WindowButton}" Focusable="False" Name="ExitButton" Background="Red" Width="20" Height="20" Margin="3" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Click="ExitButton_Click"></Button>
+                        <Button Style="{StaticResource WindowButton}" Focusable="False" Name="MinimiseButton" Background="Orange" Width="20" Height="20" Margin="3" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Click="MinimiseButton_Click"></Button>
+                    </DockPanel>
+                    <DockPanel LastChildFill="False">
+                    </DockPanel>
+                    <!--<Slider Name="timeSlider" Margin="10,8,10,7" Grid.Row="1" WindowChrome.IsHitTestVisibleInChrome="True" ValueChanged="TimeSlider_ValueChanged" VerticalAlignment="Center"/>-->
+                </Grid>
+            </Border>
+            <Grid Name="glContainer" MouseDown="glContainer_MouseDown" Background="Black">
+                <DockPanel Name="layersPanel">
+                    <Grid Name="keyboardBox" Width="200">
+
+                    </Grid>
+                    <Grid Name="contentGrid" ClipToBounds="True">
+                        <dxwpf:DXElement x:Name="imgRender"/>
+                        <Rectangle Fill="Red" Width="2" HorizontalAlignment="Left" Name="playHead"/>
+                    </Grid>
+                </DockPanel>
+                <Grid Name="containerGrid" ClipToBounds="True" PreviewMouseWheel="containerGrid_PreviewMouseWheel">
+                    <StackPanel Name="layersContainer">
+                    </StackPanel>
+                </Grid>
+                <!--<local:DXElement x:Name="dx11img"/>-->
+            </Grid>
+        </DockPanel>
+        <Rectangle Name="dropHighlight" Fill="White" Visibility="Hidden" Opacity="0.3"/>
+    </Grid>
+</Window>

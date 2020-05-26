@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prime-MIDI", "Prime-MIDI\Prime-MIDI.csproj", "{7E80CC90-185A-40FD-AD07-DDD1413E8571}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Debug|x64.ActiveCfg = Debug|x64
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Debug|x64.Build.0 = Debug|x64
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Release|x64.ActiveCfg = Release|x64
+		{7E80CC90-185A-40FD-AD07-DDD1413E8571}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A56D029C-0A48-4FED-8393-4FCDD311EA15}
+	EndGlobalSection
+EndGlobal
